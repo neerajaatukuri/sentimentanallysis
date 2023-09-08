@@ -33,6 +33,7 @@ def remove_stopwords(text):
     return output
 
 def lemmatizer(text):
+    nlp = spacy.load('en_core_web_sm')
     doc = nlp(text)
     sent = [token.lemma_ for token in doc if not token.text in set(stopwords)]
     return ' '.join(sent)
